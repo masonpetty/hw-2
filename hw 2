@@ -1,0 +1,64 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Part 1: Input a letter grade and print GPA points
+        Console.Write("Enter a letter grade (A, B, C, D, F): ");
+        char grade = char.ToUpper(Console.ReadKey().KeyChar);
+
+        int gpa = GetGPA(grade);
+
+        if (gpa != -1)
+        {
+            Console.WriteLine($"\nGPA Points for {grade}: {gpa}");
+        }
+        else
+        {
+            Console.WriteLine("\nWrong Letter Grade!");
+        }
+
+        Console.WriteLine();
+
+        // Part 2: Input three numbers and print the smallest value
+        Console.WriteLine("Enter three numbers:");
+
+        Console.Write("Enter the first number: ");
+        double num1 = double.Parse(Console.ReadLine());
+
+        Console.Write("Enter the second number: ");
+        double num2 = double.Parse(Console.ReadLine());
+
+        Console.Write("Enter the third number: ");
+        double num3 = double.Parse(Console.ReadLine());
+
+        double smallest = GetSmallestValue(num1, num2, num3);
+
+        Console.WriteLine($"The smallest value among {num1}, {num2}, and {num3} is: {smallest}");
+    }
+
+    static int GetGPA(char grade)
+    {
+        switch (grade)
+        {
+            case 'A':
+                return 4;
+            case 'B':
+                return 3;
+            case 'C':
+                return 2;
+            case 'D':
+                return 1;
+            case 'F':
+                return 0;
+            default:
+                return -1; // Invalid input
+        }
+    }
+
+    static double GetSmallestValue(double a, double b, double c)
+    {
+        return Math.Min(Math.Min(a, b), c);
+    }
+}
